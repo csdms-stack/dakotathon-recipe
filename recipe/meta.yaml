@@ -12,11 +12,13 @@ requirements:
   build:
     - python
     - numpy
+    - nose
     - pyyaml
     - basic-modeling-interface
   run:
     - python
     - numpy
+    - nose
     - pyyaml
     - basic-modeling-interface
 
