@@ -29,7 +29,7 @@ test:
     - dakotathon
   commands:
     - dakota_run_plugin --help
-    - dakota_run_component -- help
+    - dakota_run_component --help
 
 about:
   home: http://csdms-dakota.readthedocs.io
