@@ -7,7 +7,6 @@ package:
 
 source:
   git_url: https://github.com/csdms/dakota
-  git_rev: {{ version }}
 
 requirements:
   build:
