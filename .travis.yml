@@ -31,7 +31,9 @@ install:
 - conda install python=$TRAVIS_PYTHON_VERSION
 - conda install -q conda-build anaconda-client coverage sphinx
 script:
-- conda render ./recipe -c csdms-stack -c conda-forge --file ./recipe/meta.yaml
+- ls -aF
+- conda render ./recipe -c csdms-stack -c conda-forge --file meta.yaml
+- cp meta.yaml recipe
 - cat ./recipe/meta.yaml
 - conda build ./recipe -c csdms-stack -c conda-forge
 after_success:
