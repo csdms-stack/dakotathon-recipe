@@ -32,9 +32,9 @@ install:
 - conda install -q conda-build anaconda-client coverage sphinx
 script:
 - ls -aF
+- pwd
 - conda render ./recipe -c csdms-stack -c conda-forge --file $HOME/meta.yaml
-- ls -aF
-- cp meta.yaml recipe
+- cp $HOME/meta.yaml recipe
 - cat ./recipe/meta.yaml
 - conda build ./recipe -c csdms-stack -c conda-forge
 after_success:
