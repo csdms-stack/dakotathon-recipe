@@ -32,7 +32,11 @@ install:
 - conda install -q conda-build anaconda-client coverage sphinx
 script:
 - conda build ./recipe -c csdms-stack -c conda-forge
+- ls -aF
+- pwd
+- conda render ./recipe -c csdms-stack -c conda-forge --file $HOME/meta.yaml
+- cp $HOME/meta.yaml recipe
+- cat ./recipe/meta.yaml
 after_success:
-- curl https://raw.githubusercontent.com/csdms/ci-tools/master/anaconda_upload.py
-  > $HOME/anaconda_upload.py
+- curl https://raw.githubusercontent.com/csdms/ci-tools/mdpiper/modify-upload-script/anaconda_upload.py > $HOME/anaconda_upload.py
 - echo $ANACONDA_TOKEN | python $HOME/anaconda_upload.py ./recipe --channel=main --org=csdms-stack --token=-
