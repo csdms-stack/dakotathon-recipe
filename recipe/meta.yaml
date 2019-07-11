@@ -1,12 +1,12 @@
 {% set name = "dakotathon" %}
-{% set version = "0.4.1" %}
+{% set version = "0.5" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  git_url: https://github.com/csdms/dakota
+  git_url: https://github.com/csdms/{{ name }}
   git_rev: v{{ version }}
 
 build:
@@ -22,7 +22,7 @@ requirements:
     - python
     - numpy
     - pyyaml
-    - basic-modeling-interface
+    - bmipy
 
 test:
   requires:
@@ -34,8 +34,9 @@ test:
     - dakota_run_component --help
 
 about:
-  home: http://csdms-dakota.readthedocs.io
+  home: http://csdms.colorado.edu/wiki/Model:Dakotathon
   license: MIT
   license_file: LICENSE
   summary: A Python API and BMI for the Dakota iterative systems analysis toolkit.
-  dev_url: https://github.com/csdms/dakota
+  doc_url: http://csdms-dakota.readthedocs.io
+  dev_url: https://github.com/csdms/dakotathon
