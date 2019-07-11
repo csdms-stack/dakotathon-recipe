@@ -16,6 +16,8 @@ build:
 requirements:
   build:
     - python
+    - numpy
+    - pyyaml
   run:
     - python
     - numpy
