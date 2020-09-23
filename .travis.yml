@@ -6,9 +6,7 @@ os:
 
 env:
   matrix:
-    - PYTHON="3.6"
-    - PYTHON="3.7"
-    # - PYTHON="3.8"
+    - PYTHON="3"
   global:
     - MINICONDA_URL_BASE=" https://repo.anaconda.com/miniconda/Miniconda3-latest"
     - secure: "dMvcvkDOhjt5pUxbSRxxfp47L/7AQC7b0jLCM5n9p+3EMoT97HAo7RswyuWWtjoxNGDcJnWF1kX7Cm91HU+B5LEujDt07k+ahIC6sWFlZ/hiX/gjTAx2VimkYc6ue/JoQeJSp9C8P/ujNbU2bxANR4ZqAEThyjmWgwDdIYKuMkibnoRD6tgS9btBCdtiHz/nAjSAWkudmL/cL+X14WIu2OC4AXqi6lPuWV66elFU8NPDK/XsPmD4hwO5U1sN/icYgCbxPoBBa3hvUYxMAk2U1dmKIWpr0NJogchIWR6Ty84xlL2ekKSB67759mcaWwQOc/q4iOhR1AD+GSYmdOT+UOW9adElpSjibq1sJy8wbgcgcIt9vLXv/DgcFhi1jSu1GpwijiDUJfHqcyiVJ9oBA0cO4qJokNX6yo2cYz0NEDpG3xE1mQ/nVRroTY5t9um5R5EjhdYH9BuNlG4ZOWBVymPE0RyoXhqB9K2fr8j1oM928rqXg5B/O41AFJNmPWA7loE83xWYJGBQJ4vpDPg8xuZGRlc8kRBiqV3hiO8wj5Jzr1CaPjZ6e68Tf9s0g7nwrFjrqALL4cEDaccDU4UZ9TMWBatRRZ6h1YygkBbWnF3lNDuXqRDRYkikmlVhLq4+U/YAJaep0YcdI8rSTYkyPDrPAjUVVKxQJoZryIq5f4k="
