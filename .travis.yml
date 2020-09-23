@@ -32,6 +32,7 @@ install:
   - conda config --set always_yes yes --set changeps1 no
   - conda config --set channel_priority strict
   - conda config --add channels csdms-stack
+  - conda config --add channels defaults
   - conda config --add channels conda-forge
   - conda create -n test python=$PYTHON conda-build anaconda-client
   - source activate test
