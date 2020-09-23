@@ -2,14 +2,13 @@ language: generic
 
 os:
   - linux
-  - osx
 
 env:
   matrix:
-    - TRAVIS_PYTHON_VERSION="3.*"
+    - PYTHON="3.7"
   global:
     - MINICONDA_URL_BASE=" https://repo.anaconda.com/miniconda/Miniconda3-latest"
-    - secure: "dMvcvkDOhjt5pUxbSRxxfp47L/7AQC7b0jLCM5n9p+3EMoT97HAo7RswyuWWtjoxNGDcJnWF1kX7Cm91HU+B5LEujDt07k+ahIC6sWFlZ/hiX/gjTAx2VimkYc6ue/JoQeJSp9C8P/ujNbU2bxANR4ZqAEThyjmWgwDdIYKuMkibnoRD6tgS9btBCdtiHz/nAjSAWkudmL/cL+X14WIu2OC4AXqi6lPuWV66elFU8NPDK/XsPmD4hwO5U1sN/icYgCbxPoBBa3hvUYxMAk2U1dmKIWpr0NJogchIWR6Ty84xlL2ekKSB67759mcaWwQOc/q4iOhR1AD+GSYmdOT+UOW9adElpSjibq1sJy8wbgcgcIt9vLXv/DgcFhi1jSu1GpwijiDUJfHqcyiVJ9oBA0cO4qJokNX6yo2cYz0NEDpG3xE1mQ/nVRroTY5t9um5R5EjhdYH9BuNlG4ZOWBVymPE0RyoXhqB9K2fr8j1oM928rqXg5B/O41AFJNmPWA7loE83xWYJGBQJ4vpDPg8xuZGRlc8kRBiqV3hiO8wj5Jzr1CaPjZ6e68Tf9s0g7nwrFjrqALL4cEDaccDU4UZ9TMWBatRRZ6h1YygkBbWnF3lNDuXqRDRYkikmlVhLq4+U/YAJaep0YcdI8rSTYkyPDrPAjUVVKxQJoZryIq5f4k="
+    - secure: "q4TF3wVmFfXL6o/n57AJZ2pxCyueDiSgWOGnNtHPxheAEJ2Fv1x+0Yw39abfeT92kJe9KzFIN6NioCKejkHEexmbtSEQqin+pHmbjc81FYnbC6L/MEIquv4Oa/KKMv1kdS4J1h+i1VHEQ7U82z7G4Ld1usyvEZSVjajiYSvo/XGI0udV4ZBt+OJTXV+7hJQpVbF8NOR5E4AYWq1Qnvl91RwCpi8VypNjwwbinfR1Zf4eAMN6XnpYoQfSpH71/nOaNa1jz+6/xl9TqE/Zg0qGF3+em1hSSIASkjcjkp2kVRypoHInYEndTAxU/scSxDu9TMWY16K7GLYEfirvukyPzqqgIQMcH+YK3dimaUEncfEKl/mBWWP3Ctqs7gHFcOVjgkSMAXw7V/Ns1ZY+Q97lXtjysrIHq4G2QweOOPLkJb/vhqnH9SfDi04jkDKT2nF1yMJrqKGbgC/KsYdZvO1XwvR61v1e5gAl8+PxxllhGPP4kC7lfvVFox2Nz0OIRlnSxYrnquFSxg5BZd5VrwQ9U+wruX72fFpbELSZcjiYqsnKA4pJVAIZH4RB6k1cC3t2a1fHgKJhWrP1e2CxIGRbMXZFLdW2GieF3c7mgo8up1+t1pvU2NL9t0BeseR/7wIsysHXt2rfJWyx/oIAUkFtT1ZrloK93uO9mx3cXk0JI1I="
 
 before_install:
   - |
@@ -28,12 +27,16 @@ install:
   - export PATH="$HOME/conda/bin:$PATH"
   - hash -r
   - conda config --set always_yes yes --set changeps1 no
-  - conda create -n test python=$TRAVIS_PYTHON_VERSION -c conda-forge
+  - conda config --set channel_priority strict
+  - conda config --add channels csdms-stack
+  - conda config --add channels defaults
+  - conda config --add channels conda-forge
+  - conda create -n test python=$PYTHON conda-build anaconda-client
   - source activate test
-  - conda install -q conda-build anaconda-client
+  - conda info -a 
 
 script:
-  - conda build ./recipe -c conda-forge -c csdms-stack
+  - conda build ./recipe
 
 after_success:
   - curl https://raw.githubusercontent.com/csdms/ci-tools/master/anaconda_upload.py > $HOME/anaconda_upload.py
